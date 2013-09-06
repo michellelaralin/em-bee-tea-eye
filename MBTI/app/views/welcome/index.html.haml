@@ -1,0 +1,52 @@
+
+
+%h1{style: "text-align: center;"} The World's Best Free MBTI Test v0.1
+.row
+	#javascript-test.col-md-6.col-md-offset-3
+		%form{name: "awesometest"}
+			#introvert-score
+			#extrovert-score
+			#intuition-score
+			#sensing-score
+			#thinking-score
+			#feeling-score
+			#perceiving-score
+			#judging-score
+
+			%p
+				%p
+					%b Do you like to spend time alone?
+					.answer
+						%input{type: "radio", name: "question1", class: "introvert-question"}
+						%label Yes
+					.answer
+						%input{type: "radio", name: "question1", class: "extrovert-question"}
+						%label No
+			%p
+				%p
+					%b Do you prefer one-on-one interactions over large groups?
+					.answer
+						%input{type: "radio", name: "question2", class: "introvert-question"}
+						%label Yes
+					.answer
+						%input{type: "radio", name: "question2", class: "extrovert-question"}
+						%label No
+			%p
+				%p
+					%b You make plans to meet up with a friend at 6:00PM
+					.answer
+						%input{type: "radio", name: "question3", class: "perceiving-question"}
+						%label You arrive a little later than 6:00PM
+					.answer
+						%input{type: "radio", name: "question3", class: "judging-question"}
+						%label You arrive at 6:00PM sharp
+		%button#calculate.btn.btn-block.btn-large.btn-info CALCULATE
+
+	-#
+		%div{"ng-app" =>""}
+			#mbti-test{"ng-controller" => "MBTITestController"}
+				%li{"ng-repeat" => "question in questions"}
+					{{question.name}}
+					%i {{question.type}}
+.row
+	= link_to "MBTI Blog", controller: "posts"
