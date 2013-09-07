@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+	before_filter :authenticate_user!,  only: [:new, :create, :edit, :update, :destroy]
+
 	def new
 		@question = Question.new
 	end
@@ -11,11 +13,13 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-	  @question = Question.find(params[:id])
+	  #@question = Question.find(params[:id])
+	  render json: Question.find(params[:id])
 	end
 
 	def index
-		@questions = Question.all
+		#@questions = Question.all
+		render json: Question.all
 	end
 
 	def edit

@@ -1,4 +1,6 @@
 MBTI::Application.routes.draw do
+
+  devise_for :users
   get "welcome/index"
   
   root to: "welcome#index"
@@ -9,6 +11,11 @@ MBTI::Application.routes.draw do
 
   resources :posts do
     resources :comments
+  end
+
+  scope :api do
+    get "/questions(.:format)" => "questions#index"
+    get "/questions/:id(.:format)" => "questions#show"
   end
 
 
