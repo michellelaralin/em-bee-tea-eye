@@ -2,8 +2,10 @@
 
 one:
   title: MyString
-  text: MyText
+  weight: 1
+  question_id: 
 
 two:
   title: MyString
-  text: MyText
+  weight: 1
+  question_id: 

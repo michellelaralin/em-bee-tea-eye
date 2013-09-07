@@ -1,0 +1,13 @@
+%h1 Title:
+= @question.title
+%h1 Type:
+= @question.type
+
+%h2 Answers
+= render @question.answers
+
+%h2 Add an answer
+= render "answers/form"
+
+= link_to "All Questions", questions_path
+= link_to "New Question", new_question_path

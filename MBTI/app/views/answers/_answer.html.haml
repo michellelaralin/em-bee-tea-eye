@@ -1,0 +1,9 @@
+%tr
+	%th
+		%input{type: "radio", name: "derp_#{answer.question_id}", class: "answer-radio #{answer.question.type}_answer", data:{weight:"#{answer.weight}"}}
+		= answer.title
+	%th= answer.weight
+	%th
+		= link_to 'delete', [answer.question, answer],
+	           method: :delete,
+	           data: { confirm: 'Are you sure?'}

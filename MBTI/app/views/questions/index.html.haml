@@ -1,0 +1,27 @@
+%h1 Test Questions
+= link_to "New Question", new_question_path, class: "btn btn-default"
+%table.table.table-compressed
+	%thead
+		%tr
+			%th
+				Question
+			%th
+				Type
+			%th Functions
+	%tbody
+	- @questions.each do |question|
+		%tr
+			%th{class: "#{question.type}_question"}
+				= link_to question.title, question_path(question)
+				%br
+				%table.table
+					= render question.answers
+			%th
+				%i= question.type
+			%th
+				= link_to 'Edit', edit_question_path(question)
+				= link_to 'Delete', question_path(question),
+		                    method: :delete, data: { confirm: 'Are you sure?' }
+%button#calculatescore.btn.btn-large.btn-info
+	Calculate my score
+#calculatedscore

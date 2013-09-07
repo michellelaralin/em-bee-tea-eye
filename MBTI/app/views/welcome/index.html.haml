@@ -40,8 +40,34 @@
 					.answer
 						%input{type: "radio", name: "question3", class: "judging-question"}
 						%label You arrive at 6:00PM sharp
-		%button#calculate.btn.btn-block.btn-large.btn-info CALCULATE
-
+			%p
+				%p
+					%b You are almost never late for your appointments
+					.answer
+						%input{type: "radio", name: "question4", class: "judging-question"}
+						%label Yes
+					.answer
+						%input{type: "radio", name: "question4", class: "perceiving-question"}
+						%label No
+			%p
+				%p
+					%b You tend to be unbiased
+					.answer
+						%input{type: "radio", name: "question5", class: "thinking-question"}
+						%label Yes
+					.answer
+						%input{type: "radio", name: "question5", class: "feeling-question"}
+						%label No
+			%p
+				%p
+					%b You get bored if you have to read theoretical books
+					.answer
+						%input{type: "radio", name: "question6", class: "sensing-question"}
+						%label Yes
+					.answer
+						%input{type: "radio", name: "question6", class: "intuitive-question"}
+						%label No
+		%button#calculate.btn.btn-large.btn-info Calculate My MBTI Type
 	-#
 		%div{"ng-app" =>""}
 			#mbti-test{"ng-controller" => "MBTITestController"}
