@@ -16,6 +16,8 @@ MBTI::Application.routes.draw do
   scope :api do
     get "/questions(.:format)" => "questions#index"
     get "/questions/:id(.:format)" => "questions#show"
+    get " /questions/:question_id/answers(.:format)" => "answers#index"
+    get "/questions/:question_id/answers/:id(.:format)" => "answers#show"
   end
 
 

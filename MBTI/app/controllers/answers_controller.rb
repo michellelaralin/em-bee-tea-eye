@@ -13,4 +13,15 @@ class AnswersController < ApplicationController
 		@answer.destroy
 		redirect_to question_path(@question)	
   	end
+
+	def show
+		@question = Question.find(params[:question_id])
+		render json: @question.answers.find(params[:id])
+	end
+
+	def index
+		#@questions = Question.all
+		render json: Answer.all
+	end
+
 end

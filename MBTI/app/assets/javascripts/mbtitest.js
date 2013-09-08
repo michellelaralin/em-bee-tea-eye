@@ -1,17 +1,7 @@
-function MBTITestController($scope) {
-  $scope.questions = [
-    {"name": "Do you like to be alone?",
-     "type": "introvert",
- 	},
-    {"name": "Do you like the company of people?",
-     "type": "extrovert",
- 	},
-  ];
-}
-
 $(function() {
 
 	$('#calculatescore').click(function() {
+		$('#calculatedscore').html('');
 		IEScore();
 		NSScore();
 		TFScore();

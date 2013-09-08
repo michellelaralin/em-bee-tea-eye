@@ -13,13 +13,17 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-	  #@question = Question.find(params[:id])
-	  render json: Question.find(params[:id])
+	  @question = Question.find(params[:id])
+	  #render json: Question.find(params[:id])
 	end
 
 	def index
-		#@questions = Question.all
-		render json: Question.all
+		@questions = Question.all
+		respond_to do |format|
+			format.html
+			#format.json {render json: Question.all }
+			format.json {render :file => "/questions/index.json.erb", :content_type => 'application/json'}
+		end
 	end
 
 	def edit
@@ -41,5 +45,4 @@ class QuestionsController < ApplicationController
 	 
 	  redirect_to questions_path
 	end
-
 end

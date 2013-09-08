@@ -1,20 +1,27 @@
 
 
 %h1{style: "text-align: center;"} The World's Best Free MBTI Test v0.1
-.row{style: "text-align: center;"}
-	= link_to "Take the test", questions_path, class: "btn btn-info"
-	%br
-	%br
-	- if signed_in?
-		= link_to "Sign Out", destroy_user_session_path, method: "delete"
-	- else
-		= link_to "Sign Up", new_user_registration_path, class: "btn btn-default"
-		= link_to "Sign In", new_user_session_path, class: "btn btn-default"
-
-
-#Questions{ "ng-controller"=> "QuestionsCtrl" }
-	#questions-list-container
-		%ul
-			%li{ "ng-repeat"=> "question in questions"}
-				%p Question: {{question.title}}
-				%p Type: {{question.type}}
+.row
+	#Questions.col-sm-10.col-sm-offset-1.col-md-6.col-md-offset-3{ "ng-controller"=> "QuestionsCtrl" }
+		#test
+			-#
+				%input{type: "text", "ng-model" => "QuestionSearchText"}
+			.question.well{ "ng-repeat"=> "question in questions | filter:QuestionSearchText", "ng-questionid" => "{{question.id}}", "ng-questiontype" => "{{question.type}}", class: "{{question.type}}_question"}
+				%p.question-title 
+					{{question.id}}.
+					%b {{question.title}}
+					- if signed_in?
+						%i.question-type {{question.type}}
+				.answer
+					%input{type: "radio", "ng-model" => "answer_weight", value: "-1", name: "answer_{{question.id}}", id: "radio_{{question.answer_neg1}}", class: "{{question.type}}_answer", data:{weight: "-1"}}
+					%label{for: "radio_{{question.answer_neg1}}"} {{question.answer_neg1}} 
+				.answer
+					%input{type: "radio", "ng-model" => "answer_weight", value: "1", name: "answer_{{question.id}}", id: "radio_{{question.answer_1}}", class: "{{question.type}}_answer", data:{weight: "1"}}
+					%label{for: "radio_{{question.answer_1}}"} {{question.answer_1}}
+				.answer
+					%input{type: "radio", "ng-model" => "answer_weight", value: "0", name: "answer_{{question.id}}", id: "radio_{{question.answer_0}}", class: "{{question.type}}_answer", data:{weight: "0"}}
+					%label{for: "radio_{{question.answer_0}}"} {{question.answer_0}}
+				- if signed_in?
+					Question # {{$index}}, weight: {{answer_weight}}
+			%button.btn.btn-info#calculatescore Calculate my damn score
+			%h1#calculatedscore

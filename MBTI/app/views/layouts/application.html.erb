@@ -9,8 +9,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="myApp">
+<%= render 'layouts/header' %>
 
 <%= yield %>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
